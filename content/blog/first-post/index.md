@@ -1,7 +1,7 @@
 ---
-title: First blog post
+title: Welcome!
 date: "2021-01-31T12:47:03.284Z"
-description: "The beginning to my blog"
+description: "Is this thing on?"
 ---
 
 Welcome to my blog! The plan is to write about code, technology, and learning. I plan to document my journeys learning new tools and languages.
