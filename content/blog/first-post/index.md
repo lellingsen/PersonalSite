@@ -10,4 +10,4 @@ I'm an 8-year IT/software veteran who transitioned into a management role a few 
 
 This site is being made using the `gatsby-starter-blog` template, created by Kyle Matthews. Thank you Kyle for helping me to get started faster!
 
-I'm choosing Gatsby to help myself learn React, GraphQL, and to learn more about the JAM Stack in general. This type of site seems perfectly suited to the static-deployment model of Gatsby.
+I'm choosing Gatsby to help myself learn React, GraphQL, and to learn more about the JAM Stack in general. This type of site seems perfectly suited to the static-deployment model of Gatsby. The plan is to deploy the site on Netlify and eventually overhaul the styling with Tailwind. However, to avoid being overwhelmed, I'm taking things one step at a time.
