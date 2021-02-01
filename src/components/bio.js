@@ -27,6 +27,7 @@ const Bio = () => {
           }
           social {
             github
+            linkedin
           }
         }
       }
@@ -55,8 +56,10 @@ const Bio = () => {
         <p>
           Written by <strong>{author.name}</strong>, {author?.summary || null}
           {` `}
-          <a href={`https://github.com/${social?.github || ``}`}>
-            Here is his GitHub.
+          <a href={`https://github.com/${social?.github || ``}`}>GitHub</a>
+          &nbsp;|&nbsp;
+          <a href={`https://www.linkedin.com/in/${social?.linkedin || ``}`}>
+            LinkedIn
           </a>
         </p>
       )}

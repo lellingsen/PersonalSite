@@ -9,6 +9,7 @@ module.exports = {
     siteUrl: `https://lars-ellingsen.dev/`,
     social: {
       github: `lellingsen`,
+      linkedin: `lars-ellingsen-a800474b`,
     },
   },
   plugins: [
