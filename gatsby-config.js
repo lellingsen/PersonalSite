@@ -52,17 +52,17 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
-      resolve: `gatsby-plugin-google-analytics`,
+      resolve: `gatsby-plugin-typescript`,
       options: {
-        //trackingId: `ADD YOUR TRACKING ID HERE`,
+        typeCheck: process.env.NODE_ENV !== "production",
       },
     },
     `gatsby-plugin-feed`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Gatsby Starter Blog`,
-        short_name: `GatsbyJS`,
+        name: `Lars Ellingsen`,
+        short_name: `Lars Ellingsen`,
         start_url: `/`,
         background_color: `#ffffff`,
         theme_color: `#663399`,
