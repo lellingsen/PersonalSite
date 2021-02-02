@@ -5,16 +5,36 @@ import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
+interface PostNavStub {
+  fields: {
+    slug: string
+  }
+  frontmatter: {
+    title: string
+  }
+}
+
 interface Props {
   data: {
-    markdownRemark: any
+    markdownRemark: {
+      frontmatter: {
+        title: string
+        description: string
+        date: string
+      }
+      excerpt: string
+      html: string
+    }
     site: {
       siteMetadata: {
         title: string
       }
     }
   }
-  pageContext: any
+  pageContext: {
+    previous: PostNavStub
+    next: PostNavStub
+  }
 }
 
 const BlogPostTemplate = ({ data, pageContext }: Props) => {
@@ -86,7 +106,6 @@ export const pageQuery = graphql`
       }
     }
     markdownRemark(fields: { slug: { eq: $slug } }) {
-      id
       excerpt(pruneLength: 160)
       html
       frontmatter {
