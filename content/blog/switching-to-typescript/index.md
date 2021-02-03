@@ -1,6 +1,6 @@
 ---
 title: Switching to TypeScript
-date: "2021-02-05"
+date: "2021-02-02"
 description: "Replacing the default .js files with TypeScript in Gatsby"
 ---
 
