@@ -12,7 +12,7 @@ interface Post {
     description: string
   }
   fields: {
-    slug: any
+    slug: string
   }
   excerpt: string
 }
