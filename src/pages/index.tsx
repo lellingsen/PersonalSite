@@ -28,15 +28,16 @@ interface Props {
       }
     }
   }
+  location: Location
 }
 
-const BlogIndex = ({ data }: Props) => {
+const BlogIndex = ({ data, location }: Props) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const posts = data.allMarkdownRemark.nodes
 
   if (posts.length === 0) {
     return (
-      <Layout location={window.location} title={siteTitle}>
+      <Layout location={location} title={siteTitle}>
         <SEO title="All posts" />
         <Bio />
         <p>
@@ -49,7 +50,7 @@ const BlogIndex = ({ data }: Props) => {
   }
 
   return (
-    <Layout location={window.location} title={siteTitle}>
+    <Layout location={location} title={siteTitle}>
       <SEO title="All posts" />
       <Bio />
       <ol style={{ listStyle: `none` }}>

@@ -35,15 +35,16 @@ interface Props {
     previous: PostNavStub
     next: PostNavStub
   }
+  location: Location
 }
 
-const BlogPostTemplate = ({ data, pageContext }: Props) => {
+const BlogPostTemplate = ({ data, pageContext, location }: Props) => {
   const post = data.markdownRemark
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const { previous, next } = pageContext
 
   return (
-    <Layout location={window.location} title={siteTitle}>
+    <Layout location={location} title={siteTitle}>
       <SEO
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
@@ -106,6 +107,7 @@ export const pageQuery = graphql`
       }
     }
     markdownRemark(fields: { slug: { eq: $slug } }) {
+      id
       excerpt(pruneLength: 160)
       html
       frontmatter {
