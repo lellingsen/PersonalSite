@@ -8,6 +8,7 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import Image from "gatsby-image"
+import { useSiteMetadata } from "../hooks/use-site-metadata"
 
 const Bio = () => {
   const data = useStaticQuery(graphql`
@@ -19,23 +20,11 @@ const Bio = () => {
           }
         }
       }
-      site {
-        siteMetadata {
-          author {
-            name
-            summary
-          }
-          social {
-            github
-            linkedin
-          }
-        }
-      }
     }
   `)
-
-  const author = data.site.siteMetadata?.author
-  const social = data.site.siteMetadata?.social
+  const siteMetadata = useSiteMetadata()
+  const author = siteMetadata.author
+  const social = siteMetadata.social
 
   const avatar = data?.avatar?.childImageSharp?.fixed
 
@@ -44,20 +33,20 @@ const Bio = () => {
       {avatar && (
         <Image
           fixed={avatar}
-          alt={author?.name || ``}
+          alt={author.name || ``}
           className="bio-avatar"
           imgStyle={{
             borderRadius: `50%`,
           }}
         />
       )}
-      {author?.name && (
+      {author.name && (
         <p>
-          Written by <strong>{author.name}</strong>, {author?.summary || null}
+          Written by <strong>{author.name}</strong>, {author.summary || null}
           {` `}
-          <a href={`https://github.com/${social?.github || ``}`}>GitHub</a>
+          <a href={`https://github.com/${social.github || ``}`}>GitHub</a>
           &nbsp;|&nbsp;
-          <a href={`https://www.linkedin.com/in/${social?.linkedin || ``}`}>
+          <a href={`https://www.linkedin.com/in/${social.linkedin || ``}`}>
             LinkedIn
           </a>
         </p>

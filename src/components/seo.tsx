@@ -8,6 +8,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { Helmet } from "react-helmet"
+import { useSiteMetadata } from "../hooks/use-site-metadata"
 import { useStaticQuery, graphql } from "gatsby"
 
 interface Props {
@@ -18,24 +19,10 @@ interface Props {
 }
 
 const SEO = ({ description, lang, meta, title }: Props) => {
-  const { site } = useStaticQuery(
-    graphql`
-      query {
-        site {
-          siteMetadata {
-            title
-            description
-            social {
-              github
-            }
-          }
-        }
-      }
-    `
-  )
+  const siteMetadata = useSiteMetadata()
 
-  const metaDescription = description || site.siteMetadata.description
-  const defaultTitle = site.siteMetadata?.title
+  const metaDescription = description || siteMetadata.description
+  const defaultTitle = siteMetadata.title
 
   return (
     <Helmet
