@@ -18,13 +18,3 @@ const NotFoundPage = ({ location }: { location: Location }) => {
 }
 
 export default NotFoundPage
-
-export const pageQuery = graphql`
-  query {
-    site {
-      siteMetadata {
-        title
-      }
-    }
-  }
-`
