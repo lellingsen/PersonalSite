@@ -3,12 +3,13 @@ module.exports = {
     title: `Lars Ellingsen`,
     author: {
       name: `Lars Ellingsen`,
-      summary: `who is a developer looking to get back into the technical side of things.`,
+      summary: `who is a development manager looking to get back into the technical side of things.`,
     },
     description: `A blog built with Gatsby to document a developer's journey to continue learning.`,
     siteUrl: `https://lars-ellingsen.dev/`,
     social: {
       github: `lellingsen`,
+      linkedin: `lars-ellingsen-a800474b`,
     },
   },
   plugins: [
@@ -51,17 +52,17 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
-      resolve: `gatsby-plugin-google-analytics`,
+      resolve: `gatsby-plugin-typescript`,
       options: {
-        //trackingId: `ADD YOUR TRACKING ID HERE`,
+        typeCheck: process.env.NODE_ENV !== "production",
       },
     },
     `gatsby-plugin-feed`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Gatsby Starter Blog`,
-        short_name: `GatsbyJS`,
+        name: `Lars Ellingsen`,
+        short_name: `Lars Ellingsen`,
         start_url: `/`,
         background_color: `#ffffff`,
         theme_color: `#663399`,

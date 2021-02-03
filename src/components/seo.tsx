@@ -8,27 +8,21 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { Helmet } from "react-helmet"
+import { useSiteMetadata } from "../hooks/use-site-metadata"
 import { useStaticQuery, graphql } from "gatsby"
 
-const SEO = ({ description, lang, meta, title }) => {
-  const { site } = useStaticQuery(
-    graphql`
-      query {
-        site {
-          siteMetadata {
-            title
-            description
-            social {
-              github
-            }
-          }
-        }
-      }
-    `
-  )
+interface Props {
+  description?: string
+  lang?: string
+  meta?: []
+  title: string
+}
 
-  const metaDescription = description || site.siteMetadata.description
-  const defaultTitle = site.siteMetadata?.title
+const SEO = ({ description, lang, meta, title }: Props) => {
+  const siteMetadata = useSiteMetadata()
+
+  const metaDescription = description || siteMetadata.description
+  const defaultTitle = siteMetadata.title
 
   return (
     <Helmet
@@ -36,7 +30,7 @@ const SEO = ({ description, lang, meta, title }) => {
         lang,
       }}
       title={title}
-      titleTemplate={defaultTitle ? `%s | ${defaultTitle}` : null}
+      titleTemplate={defaultTitle ? `%s | ${defaultTitle}` : ""}
       meta={[
         {
           name: `description`,
@@ -54,7 +48,19 @@ const SEO = ({ description, lang, meta, title }) => {
           property: `og:type`,
           content: `website`,
         },
-      ].concat(meta)}
+        {
+          name: `twitter:card`,
+          content: `summary`,
+        },
+        {
+          name: `twitter:title`,
+          content: title,
+        },
+        {
+          name: `twitter:description`,
+          content: metaDescription,
+        },
+      ].concat(meta || [])}
     />
   )
 }

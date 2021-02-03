@@ -1,6 +1,6 @@
 ---
 title: Welcome!
-date: "2021-01-31T12:47:03.284Z"
+date: "2021-01-31"
 description: "Is this thing on?"
 ---
 
