@@ -29,12 +29,12 @@ const Bio = () => {
   const avatar = data?.avatar?.childImageSharp?.fixed
 
   return (
-    <div className="bio">
+    <div className="flex border shadow p-4 bg-gray-100">
       {avatar && (
         <Image
           fixed={avatar}
           alt={author.name || ``}
-          className="bio-avatar"
+          className="mr-4 bio-avatar"
           imgStyle={{
             borderRadius: `50%`,
           }}
