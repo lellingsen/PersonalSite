@@ -1,6 +1,5 @@
 import React from "react"
 import { Link } from "gatsby"
-import "fontsource-open-sans"
 
 interface Props {
   location: Location
