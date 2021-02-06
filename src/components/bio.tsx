@@ -45,14 +45,14 @@ const Bio = () => {
           Written by <strong>{author.name}</strong>, {author.summary || null}
           {` `}
           <a
-            className="underline hover:underline hover:text-gray-300"
+            className="underline hover:underline"
             href={`https://github.com/${social.github || ``}`}
           >
             GitHub
           </a>
           &nbsp;|&nbsp;
           <a
-            className="underline hover:underline hover:text-gray-300"
+            className="underline hover:underline"
             href={`https://www.linkedin.com/in/${social.linkedin || ``}`}
           >
             LinkedIn
