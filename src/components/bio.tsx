@@ -29,12 +29,12 @@ const Bio = () => {
   const avatar = data?.avatar?.childImageSharp?.fixed
 
   return (
-    <div className="bio">
+    <div className="flex rounded shadow p-4 bg-gray-300 text-gray-800">
       {avatar && (
         <Image
           fixed={avatar}
           alt={author.name || ``}
-          className="bio-avatar"
+          className="mr-4 min-w-50"
           imgStyle={{
             borderRadius: `50%`,
           }}
@@ -44,9 +44,17 @@ const Bio = () => {
         <p>
           Written by <strong>{author.name}</strong>, {author.summary || null}
           {` `}
-          <a href={`https://github.com/${social.github || ``}`}>GitHub</a>
+          <a
+            className="underline hover:underline hover:text-gray-300"
+            href={`https://github.com/${social.github || ``}`}
+          >
+            GitHub
+          </a>
           &nbsp;|&nbsp;
-          <a href={`https://www.linkedin.com/in/${social.linkedin || ``}`}>
+          <a
+            className="underline hover:underline hover:text-gray-300"
+            href={`https://www.linkedin.com/in/${social.linkedin || ``}`}
+          >
             LinkedIn
           </a>
         </p>

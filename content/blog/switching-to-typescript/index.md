@@ -62,8 +62,7 @@ interface Props {
 
 There are number of things remaining that I'd like to do to this site. To track these, I'm doing something else that's new for me, which is using the "Projects" feature in GitHub. It appears to be perfectly suited towards this type of simple tracking.
 
-- Transition all styling over to [Tailwind](https://tailwindcss.com/), which I've never used before
-  - This will also allow me to get rid of the default styling from the template -- which is absolutely fine, but I'd like my own
+- Transition all styling over to [Tailwind](https://tailwindcss.com/), which I've never used before (this will also allow me to get rid of the default styling from the template -- which is absolutely fine, but I'd like my own)
 - Add pagination for the posts; not an issue now, but hopefully someday it will be
 - Add tags to the posts, as well as a way to browse all posts with a given tag
 - Experiment with the [Typography plugin](https://kyleamathews.github.io/typography.js/), which has a corresponding plugin for Gatsby
