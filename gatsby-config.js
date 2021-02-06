@@ -3,7 +3,7 @@ module.exports = {
     title: `Lars Ellingsen`,
     author: {
       name: `Lars Ellingsen`,
-      summary: `who is a development manager looking to get back into the technical side of things.`,
+      summary: ` a development manager looking to get back into the technical side of things.`,
     },
     description: `A blog built with Gatsby to document a developer's journey to continue learning.`,
     siteUrl: `https://lars-ellingsen.dev/`,
@@ -41,6 +41,18 @@ module.exports = {
             resolve: `gatsby-remark-responsive-iframe`,
             options: {
               wrapperStyle: `margin-bottom: 1.0725rem`,
+            },
+          },
+          {
+            resolve: `gatsby-remark-classes`,
+            options: {
+              classMap: {
+                "heading[depth=1]": "text-4xl mt-8 mb-4",
+                "heading[depth=2]": "text-3xl mt-8 mb-4",
+                "heading[depth=3]": "text-2xl mt-8 mb-4",
+                paragraph: "mb-4",
+                "list[ordered=false]": "list-disc list-outside pl-4 mb-4",
+              },
             },
           },
           `gatsby-remark-prismjs`,

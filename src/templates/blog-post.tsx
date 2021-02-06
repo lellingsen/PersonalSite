@@ -49,14 +49,12 @@ const BlogPostTemplate = ({ data, pageContext, location }: Props) => {
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
       />
-      <article
-        className="blog-post"
-        itemScope
-        itemType="http://schema.org/Article"
-      >
+      <article className="mb-4" itemScope itemType="http://schema.org/Article">
         <header>
-          <h1 itemProp="headline">{post.frontmatter.title}</h1>
-          <p>{post.frontmatter.date}</p>
+          <h1 className="text-4xl" itemProp="headline">
+            {post.frontmatter.title}
+          </h1>
+          <p className="text-gray-600 text-sm mb-4">{post.frontmatter.date}</p>
         </header>
         <section
           dangerouslySetInnerHTML={{ __html: post.html }}
@@ -67,26 +65,19 @@ const BlogPostTemplate = ({ data, pageContext, location }: Props) => {
           <Bio />
         </footer>
       </article>
-      <nav className="blog-post-nav">
-        <ul
-          style={{
-            display: `flex`,
-            flexWrap: `wrap`,
-            justifyContent: `space-between`,
-            listStyle: `none`,
-            padding: 0,
-          }}
-        >
-          <li>
+      <nav>
+        <ul className="flex flex-wrap justify-between list-none">
+          <li className="p-4 hover:shadow-md">
             {previous && (
               <Link to={previous.fields.slug} rel="prev">
-                ← {previous.frontmatter.title}
+                <p>Previous Post:</p>← {previous.frontmatter.title}
               </Link>
             )}
           </li>
-          <li>
+          <li className="p-4 hover:shadow-md">
             {next && (
               <Link to={next.fields.slug} rel="next">
+                <p className="text-right">Next Post:</p>
                 {next.frontmatter.title} →
               </Link>
             )}

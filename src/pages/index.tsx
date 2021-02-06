@@ -35,42 +35,26 @@ const BlogIndex = ({ data, location }: Props) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const posts = data.allMarkdownRemark.nodes
 
-  if (posts.length === 0) {
-    return (
-      <Layout location={location} title={siteTitle}>
-        <SEO title="All posts" />
-        <Bio />
-        <p>
-          No blog posts found. Add markdown posts to "content/blog" (or the
-          directory you specified for the "gatsby-source-filesystem" plugin in
-          gatsby-config.js).
-        </p>
-      </Layout>
-    )
-  }
-
   return (
     <Layout location={location} title={siteTitle}>
       <SEO title="All posts" />
       <Bio />
-      <ol style={{ listStyle: `none` }}>
+      <ol className="list-none mt-8">
         {posts.map(post => {
           const title = post.frontmatter.title || post.fields.slug
 
           return (
-            <li key={post.fields.slug}>
-              <article
-                className="post-list-item"
-                itemScope
-                itemType="http://schema.org/Article"
-              >
+            <li key={post.fields.slug} className="mb-8">
+              <article itemScope itemType="http://schema.org/Article">
                 <header>
-                  <h2>
+                  <h3 className="text-3xl text-violet-900">
                     <Link to={post.fields.slug} itemProp="url">
                       <span itemProp="headline">{title}</span>
                     </Link>
-                  </h2>
-                  <small>{post.frontmatter.date}</small>
+                  </h3>
+                  <small className="text-gray-500">
+                    {post.frontmatter.date}
+                  </small>
                 </header>
                 <section>
                   <p

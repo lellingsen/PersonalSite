@@ -10,30 +10,27 @@ interface Props {
 const Layout = ({ location, title, children }: Props) => {
   const rootPath = `${__PATH_PREFIX__}/`
   const isRootPath = location.pathname === rootPath
-  let header
-
-  if (isRootPath) {
-    header = (
-      <h1 className="main-heading">
-        <Link to="/">{title}</Link>
-      </h1>
-    )
-  } else {
-    header = (
-      <Link className="header-link-home" to="/">
-        {title}
-      </Link>
-    )
-  }
 
   return (
-    <div className="global-wrapper" data-is-root-path={isRootPath}>
-      <header className="global-header">{header}</header>
-      <main>{children}</main>
-      <footer>
+    <div
+      data-is-root-path={isRootPath}
+      className="flex flex-col h-screen justify-between text-gray-800"
+    >
+      <header className="mb-8 p-4 w-full bg-gray-100">
+        <Link to="/">
+          <h1 className="text-5xl lg:w-1/2 mx-auto text-gray-600">{title}</h1>
+        </Link>
+      </header>
+      <main className="w-full lg:w-1/2 mx-auto p-4 mb-auto">{children}</main>
+      <footer className="w-full p-4 text-center bg-gray-200">
         © {new Date().getFullYear()}, Built with
         {` `}
-        <a href="https://www.gatsbyjs.com">Gatsby</a>
+        <a
+          className="underline hover:underline"
+          href="https://www.gatsbyjs.com"
+        >
+          Gatsby
+        </a>
       </footer>
     </div>
   )
