@@ -29,7 +29,7 @@ const Bio = () => {
   const avatar = data?.avatar?.childImageSharp?.fixed
 
   return (
-    <div className="flex rounded shadow p-4 bg-cyan-800 text-gray-100">
+    <div className="flex rounded shadow p-4 bg-gray-300 text-gray-800">
       {avatar && (
         <Image
           fixed={avatar}

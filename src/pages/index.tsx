@@ -47,7 +47,7 @@ const BlogIndex = ({ data, location }: Props) => {
             <li key={post.fields.slug} className="mb-8">
               <article itemScope itemType="http://schema.org/Article">
                 <header>
-                  <h3 className="text-3xl text-violet-900">
+                  <h3 className="text-3xl text-cyan-900">
                     <Link to={post.fields.slug} itemProp="url">
                       <span itemProp="headline">{title}</span>
                     </Link>
