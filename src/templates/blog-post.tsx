@@ -49,7 +49,7 @@ const BlogPostTemplate = ({ data, pageContext, location }: Props) => {
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
       />
-      <article className="mb-4" itemScope itemType="http://schema.org/Article">
+      <article className="mb-8" itemScope itemType="http://schema.org/Article">
         <header>
           <h1 className="text-4xl" itemProp="headline">
             {post.frontmatter.title}
@@ -59,6 +59,7 @@ const BlogPostTemplate = ({ data, pageContext, location }: Props) => {
         <section
           dangerouslySetInnerHTML={{ __html: post.html }}
           itemProp="articleBody"
+          className="mb-8"
         />
         <hr />
         <footer>
@@ -67,21 +68,23 @@ const BlogPostTemplate = ({ data, pageContext, location }: Props) => {
       </article>
       <nav>
         <ul className="flex flex-wrap justify-between list-none">
-          <li className="p-4 hover:shadow-md">
-            {previous && (
+          {previous && (
+            <li className="p-4 border hover:shadow-md">
               <Link to={previous.fields.slug} rel="prev">
                 <p>Previous Post:</p>← {previous.frontmatter.title}
               </Link>
-            )}
-          </li>
-          <li className="p-4 hover:shadow-md">
-            {next && (
+            </li>
+          )}
+          {/* Need in case previous is empty to push next to the right */}
+          {!previous && <li></li>}
+          {next && (
+            <li className="p-4 border hover:shadow-md">
               <Link to={next.fields.slug} rel="next">
                 <p className="text-right">Next Post:</p>
                 {next.frontmatter.title} →
               </Link>
-            )}
-          </li>
+            </li>
+          )}
         </ul>
       </nav>
     </Layout>
