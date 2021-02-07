@@ -69,19 +69,20 @@ const BlogPostTemplate = ({ data, pageContext, location }: Props) => {
       <nav>
         <ul className="flex flex-wrap justify-between list-none">
           {previous && (
-            <li className="p-4 border hover:shadow-md">
+            <li className="max-w-1/2 p-4 border hover:shadow-md">
               <Link to={previous.fields.slug} rel="prev">
-                <p>Previous Post:</p>← {previous.frontmatter.title}
+                <p>Previous Post:</p>
+                <p>← {previous.frontmatter.title}</p>
               </Link>
             </li>
           )}
           {/* Need in case previous is empty to push next to the right */}
           {!previous && <li></li>}
           {next && (
-            <li className="p-4 border hover:shadow-md">
+            <li className="max-w-1/2 p-4 border hover:shadow-md">
               <Link to={next.fields.slug} rel="next">
                 <p className="text-right">Next Post:</p>
-                {next.frontmatter.title} →
+                <p className="text-right">{next.frontmatter.title} →</p>
               </Link>
             </li>
           )}
