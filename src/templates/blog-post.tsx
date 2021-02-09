@@ -4,6 +4,7 @@ import { Link, graphql } from "gatsby"
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import { useSiteMetadata } from "../hooks/use-site-metadata"
 
 interface PostNavStub {
   fields: {
@@ -24,6 +25,11 @@ interface Props {
       }
       excerpt: string
       html: string
+      parent: {
+        fields: {
+          gitLogLatestDate: string
+        }
+      }
     }
     site: {
       siteMetadata: {
@@ -40,8 +46,9 @@ interface Props {
 
 const BlogPostTemplate = ({ data, pageContext, location }: Props) => {
   const post = data.markdownRemark
-  const siteTitle = data.site.siteMetadata?.title || `Title`
+  const siteTitle = useSiteMetadata().title
   const { previous, next } = pageContext
+  const gitLogLatestDate = data.markdownRemark.parent.fields.gitLogLatestDate
 
   return (
     <Layout location={location} title={siteTitle}>
@@ -54,7 +61,9 @@ const BlogPostTemplate = ({ data, pageContext, location }: Props) => {
           <h1 className="text-4xl" itemProp="headline">
             {post.frontmatter.title}
           </h1>
-          <p className="text-gray-600 text-sm mb-4">{post.frontmatter.date}</p>
+          <p className="text-gray-600 text-sm mb-6">
+            Published: {post.frontmatter.date}; Last Updated: {gitLogLatestDate}
+          </p>
         </header>
         <section
           dangerouslySetInnerHTML={{ __html: post.html }}
@@ -96,11 +105,6 @@ export default BlogPostTemplate
 
 export const pageQuery = graphql`
   query BlogPostBySlug($slug: String!) {
-    site {
-      siteMetadata {
-        title
-      }
-    }
     markdownRemark(fields: { slug: { eq: $slug } }) {
       id
       excerpt(pruneLength: 160)
@@ -109,6 +113,13 @@ export const pageQuery = graphql`
         title
         date(formatString: "MMMM DD, YYYY")
         description
+      }
+      parent {
+        ... on File {
+          fields {
+            gitLogLatestDate(formatString: "MMMM DD, YYYY")
+          }
+        }
       }
     }
   }

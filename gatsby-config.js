@@ -62,6 +62,7 @@ module.exports = {
       },
     },
     `gatsby-transformer-sharp`,
+    `gatsby-transformer-gitinfo`,
     `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-typescript`,
