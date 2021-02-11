@@ -6,7 +6,7 @@
  */
 
 import React from "react"
-import { useStaticQuery, graphql } from "gatsby"
+import { useStaticQuery, graphql, Link } from "gatsby"
 import Image from "gatsby-image"
 import { useSiteMetadata } from "../hooks/use-site-metadata"
 
@@ -44,6 +44,10 @@ const Bio = () => {
         <p>
           Written by <strong>{author.name}</strong>, {author.summary || null}
           {` `}
+          <Link className="underline hover:underline" to="/about">
+            More
+          </Link>
+          &nbsp;|&nbsp;
           <a
             className="underline hover:underline"
             href={`https://github.com/${social.github || ``}`}
