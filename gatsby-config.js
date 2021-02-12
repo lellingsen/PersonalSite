@@ -52,6 +52,7 @@ module.exports = {
                 "heading[depth=3]": "text-2xl mt-8 mb-4",
                 paragraph: "mb-4",
                 "list[ordered=false]": "list-disc list-outside pl-4 mb-4",
+                "list[ordered=true]": "list-decimal list-outside pl-4 mb-4",
               },
             },
           },

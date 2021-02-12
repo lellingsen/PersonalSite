@@ -7,6 +7,7 @@ module.exports = {
       // Make sure added classes from gatsby-remark-classes are included
       safelist: [
         "list-disc",
+        "list-decimal",
         "list-outside",
         "pl-4",
         "mb-4",
