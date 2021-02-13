@@ -49,6 +49,15 @@ const BlogPostTemplate = ({ data, pageContext, location }: Props) => {
   const siteTitle = useSiteMetadata().title
   const { previous, next } = pageContext
   const gitLogLatestDate = data.markdownRemark.parent.fields.gitLogLatestDate
+  // git will be in UTC time, so want to convert to local to be the same timezone as the frontmatter date
+  const localTimezoneUpdated = new Date(gitLogLatestDate).toLocaleDateString(
+    "en-US",
+    {
+      month: "long",
+      day: "numeric",
+      year: "numeric",
+    }
+  )
 
   return (
     <Layout location={location} title={siteTitle}>
@@ -62,7 +71,8 @@ const BlogPostTemplate = ({ data, pageContext, location }: Props) => {
             {post.frontmatter.title}
           </h1>
           <p className="text-gray-600 text-sm mb-6">
-            Published: {post.frontmatter.date}; Last Updated: {gitLogLatestDate}
+            Published: {post.frontmatter.date}; Last Updated:{" "}
+            {localTimezoneUpdated}
           </p>
         </header>
         <section
@@ -117,7 +127,7 @@ export const pageQuery = graphql`
       parent {
         ... on File {
           fields {
-            gitLogLatestDate(formatString: "MMMM DD, YYYY")
+            gitLogLatestDate(formatString: "YYYY-MM-DDTHH:mm:ssZZ")
           }
         }
       }
