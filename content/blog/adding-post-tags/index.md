@@ -13,3 +13,5 @@ Was hard to figure out how to collapse an array; had to look up graphql document
 Had to update gatsby-node.js to make a page for each tag
 
 Had to create a page for all possible tags
+
+This really got me understanding Gatsby's structure and build process better

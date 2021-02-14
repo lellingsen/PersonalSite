@@ -74,9 +74,12 @@ const BlogPostTemplate = ({ data, pageContext, location }: Props) => {
             Tags:{" "}
             {data.markdownRemark.frontmatter.tags.map(tag => {
               return (
-                <span>
-                  <a>{tag}</a>&nbsp;
-                </span>
+                <Link
+                  to={`/tag/${tag}`}
+                  className="inline-block mr-1 underline hover:underline"
+                >
+                  {tag}
+                </Link>
               )
             })}
           </p>

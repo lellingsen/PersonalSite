@@ -1,27 +1,28 @@
 import React from "react"
-import { Link, graphql } from "gatsby"
+import { graphql } from "gatsby"
 
-import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { useSiteMetadata } from "../hooks/use-site-metadata"
+import BlogPostListItem from "../components/blog-post-list-item"
+
+interface Post {
+  id: string
+  fields: {
+    slug: string
+  }
+  frontmatter: {
+    title: string
+    description: string
+    date: string
+    tags: Array<string>
+  }
+}
 
 interface Props {
   data: {
-    markdownRemark: {
-      frontmatter: {
-        title: string
-        description: string
-        date: string
-        tags: string[]
-      }
-      excerpt: string
-      html: string
-      parent: {
-        fields: {
-          gitLogLatestDate: string
-        }
-      }
+    allMarkdownRemark: {
+      nodes: Array<Post>
     }
   }
   pageContext: {
@@ -32,9 +33,24 @@ interface Props {
 
 const TagTemplate = ({ data, pageContext, location }: Props) => {
   const siteTitle = useSiteMetadata().title
+  const posts = data.allMarkdownRemark.nodes
   return (
     <Layout location={location} title={siteTitle}>
-      <div>The tag is {pageContext.tag}</div>
+      <SEO title={`Posts tagged with ${pageContext.tag}`}></SEO>
+      <h2 className="text-3xl mb-6">Posts tagged with {pageContext.tag}:</h2>
+      <ol className="list-none">
+        {posts.map(post => {
+          return (
+            <BlogPostListItem
+              title={post.frontmatter.title}
+              date={post.frontmatter.date}
+              slug={post.fields.slug}
+              description={post.frontmatter.description}
+              tags={post.frontmatter.tags}
+            ></BlogPostListItem>
+          )
+        })}
+      </ol>
     </Layout>
   )
 }
@@ -43,7 +59,10 @@ export default TagTemplate
 
 export const pageQuery = graphql`
   query BlogPostByTag($tag: [String]) {
-    allMarkdownRemark(filter: { frontmatter: { tags: { in: $tag } } }) {
+    allMarkdownRemark(
+      filter: { frontmatter: { tags: { in: $tag } } }
+      sort: { fields: [frontmatter___date], order: DESC }
+    ) {
       nodes {
         id
         fields {

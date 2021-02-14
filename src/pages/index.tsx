@@ -1,15 +1,17 @@
 import React from "react"
-import { Link, graphql } from "gatsby"
+import { graphql } from "gatsby"
 
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import BlogPostListItem from "../components/blog-post-list-item"
 
 interface Post {
   frontmatter: {
     title: string
     date: string
     description: string
+    tags: Array<string>
   }
   fields: {
     slug: string
@@ -41,31 +43,14 @@ const BlogIndex = ({ data, location }: Props) => {
       <Bio />
       <ol className="list-none mt-8">
         {posts.map(post => {
-          const title = post.frontmatter.title || post.fields.slug
-
           return (
-            <li key={post.fields.slug} className="mb-8">
-              <article itemScope itemType="http://schema.org/Article">
-                <header>
-                  <h3 className="text-3xl text-cyan-900">
-                    <Link to={post.fields.slug} itemProp="url">
-                      <span itemProp="headline">{title}</span>
-                    </Link>
-                  </h3>
-                  <small className="text-gray-500">
-                    {post.frontmatter.date}
-                  </small>
-                </header>
-                <section>
-                  <p
-                    dangerouslySetInnerHTML={{
-                      __html: post.frontmatter.description || post.excerpt,
-                    }}
-                    itemProp="description"
-                  />
-                </section>
-              </article>
-            </li>
+            <BlogPostListItem
+              title={post.frontmatter.title}
+              date={post.frontmatter.date}
+              slug={post.fields.slug}
+              description={post.frontmatter.description}
+              tags={post.frontmatter.tags}
+            ></BlogPostListItem>
           )
         })}
       </ol>
@@ -92,6 +77,7 @@ export const pageQuery = graphql`
           date(formatString: "MMMM DD, YYYY")
           title
           description
+          tags
         }
       }
     }
