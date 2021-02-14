@@ -2,6 +2,10 @@
 title: Switching to TypeScript
 date: "2021-02-02"
 description: "Replacing the default .js files with TypeScript in Gatsby"
+tags:
+  - javascript
+  - typescript
+  - gatsby
 ---
 
 One of the first orders of business that I wanted to do was switch over the template `.js` files to TypeScript. As it is the standard in Angular projects and seems ever more popular in React development as well, I felt that it would be better for my own development, especially as I haven't used TypeScript too much.
