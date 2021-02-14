@@ -1,9 +1,7 @@
 const path = require(`path`)
 const { createFilePath } = require(`gatsby-source-filesystem`)
 
-exports.createPages = async ({ graphql, actions, reporter }) => {
-  const { createPage } = actions
-
+const createBlogPostPages = async (graphql, createPageAction, reporter) => {
   // Define a template for blog post
   const blogPost = path.resolve(`./src/templates/blog-post.tsx`)
 
@@ -38,8 +36,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   const posts = result.data.allMarkdownRemark.nodes
 
-  // Create blog posts pages
-  // But only if there's at least one markdown file found at "content/blog" (defined in gatsby-config.js)
   // `context` is available in the template as a prop and as a variable in GraphQL
 
   if (posts.length > 0) {
@@ -47,7 +43,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       const previous = index === posts.length - 1 ? null : posts[index + 1]
       const next = index === 0 ? null : posts[index - 1]
 
-      createPage({
+      createPageAction({
         path: post.fields.slug,
         component: blogPost,
         context: {
@@ -58,6 +54,49 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       })
     })
   }
+}
+
+const createTagPages = async (graphql, createPageAction, reporter) => {
+  const tagTemplate = path.resolve(`./src/templates/tag.tsx`)
+
+  const result = await graphql(
+    `
+      query AllTags {
+        allMarkdownRemark {
+          group(field: frontmatter___tags) {
+            fieldValue
+          }
+        }
+      }
+    `
+  )
+
+  if (result.errors) {
+    reporter.panicOnBuild(`There was an error loading your tags`, result.errors)
+    return
+  }
+
+  const allTags = result.data.allMarkdownRemark.group
+
+  if (allTags.length > 0) {
+    allTags.forEach(tagField => {
+      tag = tagField.fieldValue
+      createPageAction({
+        path: `/tag/${tag}`,
+        component: tagTemplate,
+        context: {
+          tag: tag,
+        },
+      })
+    })
+  }
+}
+
+exports.createPages = async ({ graphql, actions, reporter }) => {
+  const { createPage } = actions
+
+  await createBlogPostPages(graphql, createPage, reporter)
+  await createTagPages(graphql, createPage, reporter)
 }
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
@@ -110,6 +149,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       title: String
       description: String
       date: Date @dateformat
+      tags: [String]
     }
 
     type Fields {
