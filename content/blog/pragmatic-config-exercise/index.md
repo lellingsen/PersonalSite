@@ -2,6 +2,9 @@
 title: Pragmatic Programmer - YAML to JSON
 date: "2021-02-11"
 description: "Actually following along with what a book asks me to do"
+tags:
+  - books
+  - ruby
 ---
 
 Recently, I've finally been reading a book that was recommended to me many years ago, The Pragmatic Programmer (20th anniversary edition). When I was only a couple of years into my software development career one of the more senior team members mentioned it was his favorite programming book. I made a note of it, but didn't get around to reading it until more recently. For anyone who hasn't picked up a copy, I highly recommend it; I'm about halfway through and fully plan to finish. So far it stands up there with books like Clean Code for me, instantly among my favorites.

@@ -22,6 +22,7 @@ interface Props {
         title: string
         description: string
         date: string
+        tags: string[]
       }
       excerpt: string
       html: string
@@ -29,11 +30,6 @@ interface Props {
         fields: {
           gitLogLatestDate: string
         }
-      }
-    }
-    site: {
-      siteMetadata: {
-        title: string
       }
     }
   }
@@ -70,9 +66,22 @@ const BlogPostTemplate = ({ data, pageContext, location }: Props) => {
           <h1 className="text-4xl" itemProp="headline">
             {post.frontmatter.title}
           </h1>
-          <p className="text-gray-600 text-sm mb-6">
+          <p className="text-gray-600 text-sm">
             Published: {post.frontmatter.date}; Last Updated:{" "}
             {localTimezoneUpdated}
+          </p>
+          <p className="text-gray-600 text-sm mb-6">
+            Tags:{" "}
+            {data.markdownRemark.frontmatter.tags.map(tag => {
+              return (
+                <Link
+                  to={`/tag/${tag}`}
+                  className="inline-block mr-1 underline hover:underline"
+                >
+                  {tag}
+                </Link>
+              )
+            })}
           </p>
         </header>
         <section
@@ -123,6 +132,7 @@ export const pageQuery = graphql`
         title
         date(formatString: "MMMM DD, YYYY")
         description
+        tags
       }
       parent {
         ... on File {

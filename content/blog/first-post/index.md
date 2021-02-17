@@ -2,6 +2,9 @@
 title: Welcome!
 date: "2021-01-31"
 description: "Is this thing on?"
+tags:
+  - background
+  - gatsby
 ---
 
 Welcome to my blog! The plan is to write about code, technology, and learning. I plan to document my journeys learning new tools and languages.

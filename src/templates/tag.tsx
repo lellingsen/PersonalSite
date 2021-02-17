@@ -1,22 +1,22 @@
 import React from "react"
 import { graphql } from "gatsby"
 
-import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import { useSiteMetadata } from "../hooks/use-site-metadata"
 import BlogPostListItem from "../components/blog-post-list-item"
 
 interface Post {
-  frontmatter: {
-    title: string
-    date: string
-    description: string
-    tags: Array<string>
-  }
+  id: string
   fields: {
     slug: string
   }
-  excerpt: string
+  frontmatter: {
+    title: string
+    description: string
+    date: string
+    tags: Array<string>
+  }
 }
 
 interface Props {
@@ -24,24 +24,21 @@ interface Props {
     allMarkdownRemark: {
       nodes: Array<Post>
     }
-    site: {
-      siteMetadata: {
-        title: string
-      }
-    }
+  }
+  pageContext: {
+    tag: string
   }
   location: Location
 }
 
-const BlogIndex = ({ data, location }: Props) => {
-  const siteTitle = data.site.siteMetadata?.title || `Title`
+const TagTemplate = ({ data, pageContext, location }: Props) => {
+  const siteTitle = useSiteMetadata().title
   const posts = data.allMarkdownRemark.nodes
-
   return (
     <Layout location={location} title={siteTitle}>
-      <SEO title="All posts" />
-      <Bio />
-      <ol className="list-none mt-8">
+      <SEO title={`Posts tagged with ${pageContext.tag}`}></SEO>
+      <h2 className="text-3xl mb-6">Posts tagged with {pageContext.tag}:</h2>
+      <ol className="list-none">
         {posts.map(post => {
           return (
             <BlogPostListItem
@@ -58,26 +55,24 @@ const BlogIndex = ({ data, location }: Props) => {
   )
 }
 
-export default BlogIndex
+export default TagTemplate
 
 export const pageQuery = graphql`
-  query {
-    site {
-      siteMetadata {
-        title
-      }
-    }
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+  query BlogPostByTag($tag: [String]) {
+    allMarkdownRemark(
+      filter: { frontmatter: { tags: { in: $tag } } }
+      sort: { fields: [frontmatter___date], order: DESC }
+    ) {
       nodes {
-        excerpt
+        id
         fields {
           slug
         }
         frontmatter {
-          date(formatString: "MMMM DD, YYYY")
           title
           description
           tags
+          date
         }
       }
     }

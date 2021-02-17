@@ -2,6 +2,9 @@
 title: Converting to Tailwind CSS
 date: "2021-02-06"
 description: "Ripping out all of the default styles and replacing with Tailwind CSS"
+tags:
+  - tailwind
+  - css
 ---
 
 I wanted to try out Tailwind CSS due to some articles and comments I had read on Reddit. The idea of using a more flexible, utility-based CSS sounded very enticing to me. I've been using Bootstrap since it was in v2 (and was still called "Twitter Bootstrap") but had been frustrated many times in the past when I wanted to customize it past defaults, and struggled or had to be overly specific in my style rules.
