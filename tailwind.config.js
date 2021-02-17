@@ -15,6 +15,8 @@ module.exports = {
         "text-3xl",
         "text-2xl",
         "mt-8",
+        "p-4",
+        "bg-gray-200",
       ],
     },
   },

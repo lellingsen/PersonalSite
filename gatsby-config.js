@@ -53,6 +53,8 @@ module.exports = {
                 paragraph: "mb-4",
                 "list[ordered=false]": "list-disc list-outside pl-4 mb-4",
                 "list[ordered=true]": "list-decimal list-outside pl-4 mb-4",
+                blockquote: "mb-4 p-4 bg-gray-200",
+                link: "underline hover:underline",
               },
             },
           },
