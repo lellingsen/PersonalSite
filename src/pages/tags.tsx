@@ -37,7 +37,7 @@ const TagsPage = ({ data, location }: Props) => {
             <li className="mb-4">
               Tag:{" "}
               <Link
-                className="underline hover:underline"
+                className="underline hover:underline text-violet-900"
                 to={`/tag/${tag.fieldValue}`}
               >
                 {tag.fieldValue}
