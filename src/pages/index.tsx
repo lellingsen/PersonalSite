@@ -1,5 +1,5 @@
 import React from "react"
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 
 import Bio from "../components/bio"
 import Layout from "../components/layout"
@@ -54,6 +54,11 @@ const BlogIndex = ({ data, location }: Props) => {
           )
         })}
       </ol>
+      <h4 className="text-2xl">
+        <Link to="/tags" className="underline hover:underline text-violet-900">
+          View All Tags
+        </Link>
+      </h4>
     </Layout>
   )
 }

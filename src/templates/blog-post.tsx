@@ -76,7 +76,7 @@ const BlogPostTemplate = ({ data, pageContext, location }: Props) => {
               return (
                 <Link
                   to={`/tag/${tag}`}
-                  className="inline-block mr-1 underline hover:underline"
+                  className="inline-block mr-1 underline hover:underline text-violet-900"
                 >
                   {tag}
                 </Link>
