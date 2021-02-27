@@ -9,3 +9,48 @@
 .nav-container input:checked ~ nav {
   @apply block;
 }
+
+.navicon {
+  @apply bg-gray-100;
+  @apply relative;
+  @apply block;
+  height: 3px;
+  width: 25px;
+  content: "";
+}
+
+.navicon:after,
+.navicon:before {
+  @apply bg-gray-100;
+  @apply absolute;
+  @apply w-full;
+  @apply h-full;
+  @apply block;
+  @apply transition-all;
+  content: "";
+}
+
+.navicon:before {
+  top: 8px;
+}
+
+.navicon:after {
+  top: -8px;
+}
+
+.menu-open .navicon {
+  background: transparent;
+}
+
+.menu-open .navicon:before,
+.menu-open .navicon:after {
+  top: 0;
+}
+
+.menu-open .navicon:before {
+  transform: rotate(-45deg);
+}
+
+.menu-open .navicon:after {
+  transform: rotate(45deg);
+}

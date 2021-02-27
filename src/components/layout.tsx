@@ -1,5 +1,6 @@
 import React from "react"
-import { Link } from "gatsby"
+import Helmet from "react-helmet"
+import { Link, withPrefix } from "gatsby"
 
 interface Props {
   location: Location
@@ -16,23 +17,30 @@ const Layout = ({ location, title, children }: Props) => {
       data-is-root-path={isRootPath}
       className="flex flex-col h-screen justify-between text-gray-800"
     >
+      <Helmet>
+        <script src={withPrefix("script.js")} type="text/javascript" />
+      </Helmet>
       <header className="w-full bg-teal-900 text-gray-100">
         <div className="flex flex-row flex-wrap justify-between lg:w-1/2 mx-auto p-4">
           <h1 className="text-4xl">
             <Link to="/">{title}</Link>
           </h1>
-          <label htmlFor="menu-toggle" className="text-4xl cursor-pointer">
-            Menu
+          <label
+            id="menu-toggle-label"
+            htmlFor="menu-toggle"
+            className="text-4xl cursor-pointer relative pt-4"
+          >
+            <span className="navicon"></span>
           </label>
         </div>
       </header>
-      <div className="flex flex-row mx-auto lg:w-1/2 nav-container">
+      <div className="flex flex-row mx-auto w-full lg:w-1/2 nav-container">
         <input type="checkbox" id="menu-toggle" className="hidden" />
         <nav role="navigation" className="nav w-full">
           <ul className="text-center bg-gray-200">
             <li className="block">
               <Link
-                className="block p-4 text-2xl border-gray-300 hover:bg-gray-700 hover:text-gray-50"
+                className="block p-4 text-2xl border-gray-300 hover:bg-gray-700 hover:text-gray-50 transition-colors"
                 to="/"
               >
                 Home
@@ -40,7 +48,7 @@ const Layout = ({ location, title, children }: Props) => {
             </li>
             <li className="block">
               <Link
-                className="block p-4 text-2xl border-gray-300 border-t-2 hover:bg-gray-700 hover:text-gray-50"
+                className="block p-4 text-2xl border-gray-300 border-t-2 hover:bg-gray-700 hover:text-gray-50 transition-colors"
                 to="/about"
               >
                 About Lars
@@ -48,7 +56,7 @@ const Layout = ({ location, title, children }: Props) => {
             </li>
             <li className="block">
               <Link
-                className="block p-4 text-2xl border-gray-300 border-t-2 hover:bg-gray-700 hover:text-gray-50"
+                className="block p-4 text-2xl border-gray-300 border-t-2 hover:bg-gray-700 hover:text-gray-50 transition-colors"
                 to="/tags"
               >
                 Tags
