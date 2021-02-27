@@ -54,11 +54,6 @@ const BlogIndex = ({ data, location }: Props) => {
           )
         })}
       </ol>
-      <h4 className="text-2xl">
-        <Link to="/tags" className="underline hover:underline text-violet-900">
-          View All Tags
-        </Link>
-      </h4>
     </Layout>
   )
 }
