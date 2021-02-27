@@ -1,5 +1,6 @@
 import React from "react"
-import { Link } from "gatsby"
+import Helmet from "react-helmet"
+import { Link, withPrefix } from "gatsby"
 
 interface Props {
   location: Location
@@ -16,11 +17,54 @@ const Layout = ({ location, title, children }: Props) => {
       data-is-root-path={isRootPath}
       className="flex flex-col h-screen justify-between text-gray-800"
     >
-      <header className="mb-8 p-4 w-full bg-teal-900 text-gray-100">
-        <Link to="/">
-          <h1 className="text-5xl lg:w-1/2 mx-auto">{title}</h1>
-        </Link>
+      <Helmet>
+        <script src={withPrefix("script.js")} type="text/javascript" />
+      </Helmet>
+      <header className="w-full bg-teal-900 text-gray-100">
+        <div className="flex flex-row flex-wrap justify-between lg:w-1/2 mx-auto p-4">
+          <h1 className="text-4xl">
+            <Link to="/">{title}</Link>
+          </h1>
+          <label
+            id="menu-toggle-label"
+            htmlFor="menu-toggle"
+            className="text-4xl cursor-pointer relative pt-4"
+          >
+            <span className="navicon"></span>
+          </label>
+        </div>
       </header>
+      <div className="flex flex-row mx-auto w-full lg:w-1/2 nav-container">
+        <input type="checkbox" id="menu-toggle" className="hidden" />
+        <nav role="navigation" className="nav w-full">
+          <ul className="text-center bg-gray-200">
+            <li className="block">
+              <Link
+                className="block p-4 text-2xl border-gray-300 hover:bg-gray-700 hover:text-gray-50 transition-colors"
+                to="/"
+              >
+                Home
+              </Link>
+            </li>
+            <li className="block">
+              <Link
+                className="block p-4 text-2xl border-gray-300 border-t-2 hover:bg-gray-700 hover:text-gray-50 transition-colors"
+                to="/about"
+              >
+                About Lars
+              </Link>
+            </li>
+            <li className="block">
+              <Link
+                className="block p-4 text-2xl border-gray-300 border-t-2 hover:bg-gray-700 hover:text-gray-50 transition-colors"
+                to="/tags"
+              >
+                Tags
+              </Link>
+            </li>
+          </ul>
+        </nav>
+      </div>
       <main className="w-full lg:w-1/2 mx-auto p-4 mb-auto">{children}</main>
       <footer className="w-full p-4 text-center bg-teal-900 text-gray-100">
         © {new Date().getFullYear()}, Built with

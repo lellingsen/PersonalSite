@@ -22,7 +22,7 @@ const BlogPostListItem = ({ slug, title, date, description, tags }: Props) => {
           <small className="text-gray-500">
             {date}, Tags:{" "}
             {tags.map(tag => {
-              return <span>{tag}&nbsp;</span>
+              return <span key={tag}>{tag}&nbsp;</span>
             })}
           </small>
         </header>

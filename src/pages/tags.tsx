@@ -34,7 +34,7 @@ const TagsPage = ({ data, location }: Props) => {
       <ol className="">
         {allTags.map(tag => {
           return (
-            <li className="mb-4">
+            <li className="mb-4" key={tag.fieldValue}>
               Tag:{" "}
               <Link
                 className="underline hover:underline text-violet-900"
@@ -42,7 +42,7 @@ const TagsPage = ({ data, location }: Props) => {
               >
                 {tag.fieldValue}
               </Link>
-              , Count: {tag.totalCount}
+              , Post Count: {tag.totalCount}
             </li>
           )
         })}

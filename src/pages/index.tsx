@@ -50,15 +50,11 @@ const BlogIndex = ({ data, location }: Props) => {
               slug={post.fields.slug}
               description={post.frontmatter.description}
               tags={post.frontmatter.tags}
+              key={post.fields.slug}
             ></BlogPostListItem>
           )
         })}
       </ol>
-      <h4 className="text-2xl">
-        <Link to="/tags" className="underline hover:underline text-violet-900">
-          View All Tags
-        </Link>
-      </h4>
     </Layout>
   )
 }

@@ -47,6 +47,7 @@ const TagTemplate = ({ data, pageContext, location }: Props) => {
               slug={post.fields.slug}
               description={post.frontmatter.description}
               tags={post.frontmatter.tags}
+              key={post.fields.slug}
             ></BlogPostListItem>
           )
         })}
