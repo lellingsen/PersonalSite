@@ -44,7 +44,7 @@ const BlogPostTemplate = ({ data, pageContext, location }: Props) => {
   const post = data.markdownRemark
   const siteTitle = useSiteMetadata().title
   const { previous, next } = pageContext
-  const gitLogLatestDate = data.markdownRemark.parent.fields.gitLogLatestDate
+  const gitLogLatestDate = data.markdownRemark.parent.fields?.gitLogLatestDate
   // git will be in UTC time, so want to convert to local to be the same timezone as the frontmatter date
   const localTimezoneUpdated = new Date(gitLogLatestDate).toLocaleDateString(
     "en-US",
