@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+header nav {
+  @apply hidden;
+}
+
+header input:checked ~ nav {
+  @apply block;
+}
