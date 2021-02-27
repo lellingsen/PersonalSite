@@ -46,7 +46,7 @@ const Bio = () => {
           <br />
           {` `}
           <Link className="underline hover:underline" to="/about">
-            More about Lars
+            More
           </Link>
           &nbsp;|&nbsp;
           <a
