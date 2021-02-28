@@ -24,6 +24,11 @@ interface Props {
         date: string
         tags: string[]
       }
+      fields: {
+        readingTime: {
+          text: string
+        }
+      }
       excerpt: string
       html: string
       parent: {
@@ -69,6 +74,9 @@ const BlogPostTemplate = ({ data, pageContext, location }: Props) => {
           <p className="text-gray-600 text-sm">
             Published: {post.frontmatter.date}; Last Updated:{" "}
             {localTimezoneUpdated}
+          </p>
+          <p className="text-gray-600 text-sm">
+            {data.markdownRemark.fields.readingTime.text}
           </p>
           <p className="text-gray-600 text-sm mb-6">
             Tags:{" "}
@@ -133,6 +141,11 @@ export const pageQuery = graphql`
         date(formatString: "MMMM DD, YYYY")
         description
         tags
+      }
+      fields {
+        readingTime {
+          text
+        }
       }
       parent {
         ... on File {
