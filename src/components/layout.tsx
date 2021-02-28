@@ -28,7 +28,7 @@ const Layout = ({ location, title, children }: Props) => {
           <label
             id="menu-toggle-label"
             htmlFor="menu-toggle"
-            className="text-4xl cursor-pointer relative pt-4"
+            className="text-4xl cursor-pointer relative pt-5"
           >
             <span className="navicon"></span>
           </label>
@@ -37,10 +37,10 @@ const Layout = ({ location, title, children }: Props) => {
       <div className="flex flex-row mx-auto w-full lg:w-1/2 nav-container">
         <input type="checkbox" id="menu-toggle" className="hidden" />
         <nav role="navigation" className="nav w-full">
-          <ul className="text-center bg-gray-200">
+          <ul className="text-center bg-teal-900 text-gray-100">
             <li className="block">
               <Link
-                className="block p-4 text-2xl border-gray-300 hover:bg-gray-700 hover:text-gray-50 transition-colors"
+                className="block p-4 text-2xl border-gray-300 border-t-2 hover:bg-teal-500 hover:text-gray-800 transition-colors"
                 to="/"
               >
                 Home
@@ -48,7 +48,7 @@ const Layout = ({ location, title, children }: Props) => {
             </li>
             <li className="block">
               <Link
-                className="block p-4 text-2xl border-gray-300 border-t-2 hover:bg-gray-700 hover:text-gray-50 transition-colors"
+                className="block p-4 text-2xl border-gray-300 border-t-2 hover:bg-teal-500 hover:text-gray-800 transition-colors"
                 to="/about"
               >
                 About Lars
@@ -56,7 +56,7 @@ const Layout = ({ location, title, children }: Props) => {
             </li>
             <li className="block">
               <Link
-                className="block p-4 text-2xl border-gray-300 border-t-2 hover:bg-gray-700 hover:text-gray-50 transition-colors"
+                className="block p-4 text-2xl border-gray-300 border-t-2 hover:bg-teal-500 hover:text-gray-800 transition-colors"
                 to="/tags"
               >
                 Tags
