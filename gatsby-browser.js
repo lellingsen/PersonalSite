@@ -12,10 +12,11 @@ import "./src/styles/prismjs-nord-theme.css"
 export const onRouteUpdate = ({ location, prevLocation }) => {
   const menuToggle = document.getElementById("menu-toggle-label")
   menuToggle.onclick = () => {
-    if (menuToggle.classList.contains("menu-open")) {
-      menuToggle.classList.remove("menu-open")
+    const openClass = "menu-open"
+    if (menuToggle.classList.contains(openClass)) {
+      menuToggle.classList.remove(openClass)
     } else {
-      menuToggle.classList.add("menu-open")
+      menuToggle.classList.add(openClass)
     }
   }
 }
