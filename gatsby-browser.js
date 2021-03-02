@@ -10,7 +10,6 @@ import "./src/styles/global.css"
 import "./src/styles/prismjs-nord-theme.css"
 
 export const onRouteUpdate = ({ location, prevLocation }) => {
-  console.log("attaching click handler")
   const menuToggle = document.getElementById("menu-toggle-label")
   menuToggle.onclick = () => {
     if (menuToggle.classList.contains("menu-open")) {
