@@ -75,6 +75,13 @@ const Layout = ({ location, title, children }: Props) => {
         >
           Gatsby
         </a>
+        , Hosted on{" "}
+        <a
+          className="underline hover:underline"
+          href="https://www.netlify.com/"
+        >
+          Netlify
+        </a>
       </footer>
     </div>
   )
