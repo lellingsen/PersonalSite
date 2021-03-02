@@ -40,7 +40,7 @@ const Layout = ({ location, title, children }: Props) => {
           <ul className="text-center bg-teal-900 text-gray-100">
             <li className="block">
               <Link
-                className="block p-4 text-2xl border-gray-300 border-t-2 hover:bg-teal-500 hover:text-gray-800 transition-colors"
+                className="block p-4 text-2xl border-gray-300 border-t-2 hover:bg-violet-800 transition-colors"
                 to="/"
               >
                 Home
@@ -48,7 +48,7 @@ const Layout = ({ location, title, children }: Props) => {
             </li>
             <li className="block">
               <Link
-                className="block p-4 text-2xl border-gray-300 border-t-2 hover:bg-teal-500 hover:text-gray-800 transition-colors"
+                className="block p-4 text-2xl border-gray-300 border-t-2 hover:bg-violet-800 transition-colors"
                 to="/about"
               >
                 About Lars
@@ -56,7 +56,7 @@ const Layout = ({ location, title, children }: Props) => {
             </li>
             <li className="block">
               <Link
-                className="block p-4 text-2xl border-gray-300 border-t-2 hover:bg-teal-500 hover:text-gray-800 transition-colors"
+                className="block p-4 text-2xl border-gray-300 border-t-2 hover:bg-violet-800 transition-colors"
                 to="/tags"
               >
                 Tags
