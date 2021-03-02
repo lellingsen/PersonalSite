@@ -1,6 +1,5 @@
 import React from "react"
-import Helmet from "react-helmet"
-import { Link, withPrefix } from "gatsby"
+import { Link } from "gatsby"
 
 interface Props {
   location: Location
@@ -17,9 +16,6 @@ const Layout = ({ location, title, children }: Props) => {
       data-is-root-path={isRootPath}
       className="flex flex-col h-screen justify-between text-gray-800"
     >
-      <Helmet>
-        <script src={withPrefix("script.js")} type="text/javascript" />
-      </Helmet>
       <header className="w-full bg-teal-900 text-gray-100">
         <div className="flex flex-row flex-wrap justify-between lg:w-1/2 mx-auto p-4">
           <h1 className="text-4xl">
