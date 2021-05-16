@@ -62,15 +62,8 @@ const createPostListPages = async (graphql, createPageAction, reporter) => {
   const result = await graphql(
     `
       {
-        allMarkdownRemark(
-          sort: { fields: [frontmatter___date], order: DESC }
-          limit: 1000
-        ) {
-          nodes {
-            fields {
-              slug
-            }
-          }
+        allMarkdownRemark {
+          totalCount
         }
       }
     `
@@ -84,11 +77,11 @@ const createPostListPages = async (graphql, createPageAction, reporter) => {
     return
   }
 
-  const posts = result.data.allMarkdownRemark.nodes
+  const postsCount = result.data.allMarkdownRemark.totalCount
 
-  if (posts.length > 0) {
+  if (postsCount > 0) {
     const postsPerPage = 3
-    const pageCount = Math.ceil(posts.length / postsPerPage)
+    const pageCount = Math.ceil(postsCount / postsPerPage)
 
     for (let i = 1; i <= pageCount; i++) {
       const previous = i > 1 ? i - 1 : null
@@ -99,8 +92,8 @@ const createPostListPages = async (graphql, createPageAction, reporter) => {
         context: {
           skip: (i - 1) * postsPerPage,
           limit: postsPerPage,
-          previous: previous !== null ? `/posts/${previous}` : null,
-          next: next !== null ? `/posts/${next}` : null,
+          previousPage: previous !== null ? `/posts/${previous}` : null,
+          nextPage: next !== null ? `/posts/${next}` : null,
         },
       }
       createPageAction(params)

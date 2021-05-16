@@ -31,8 +31,8 @@ interface Props {
     }
   }
   pageContext: {
-    previous: string
-    next: string
+    previousPage: string
+    nextPage: string
   }
   location: Location
 }
@@ -40,7 +40,7 @@ interface Props {
 const BlogIndex = ({ data, pageContext, location }: Props) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const posts = data.allMarkdownRemark.nodes
-  const { previous, next } = pageContext
+  const { previousPage: previous, nextPage: next } = pageContext
 
   return (
     <Layout location={location} title={siteTitle}>
