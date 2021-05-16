@@ -56,6 +56,62 @@ const createBlogPostPages = async (graphql, createPageAction, reporter) => {
   }
 }
 
+const createPostListPages = async (graphql, createPageAction, reporter) => {
+  const postList = path.resolve(`./src/templates/post-list.tsx`)
+
+  const result = await graphql(
+    `
+      {
+        allMarkdownRemark(
+          sort: { fields: [frontmatter___date], order: DESC }
+          limit: 1000
+        ) {
+          nodes {
+            fields {
+              slug
+            }
+          }
+        }
+      }
+    `
+  )
+
+  if (result.errors) {
+    reporter.panicOnBuild(
+      `There was an error loading your blog posts for lists`,
+      result.errors
+    )
+    return
+  }
+
+  const posts = result.data.allMarkdownRemark.nodes
+
+  if (posts.length > 0) {
+    const postsPerPage = 3
+    const pageCount = Math.ceil(posts.length / postsPerPage)
+
+    for (let i = 1; i <= pageCount; i++) {
+      const previous = i > 1 ? i - 1 : null
+      const next = i < pageCount ? i + 1 : null
+      const params = {
+        path: `/posts/${i}`,
+        component: postList,
+        context: {
+          skip: (i - 1) * postsPerPage,
+          limit: postsPerPage,
+          previous: previous !== null ? `/posts/${previous}` : null,
+          next: next !== null ? `/posts/${next}` : null,
+        },
+      }
+      createPageAction(params)
+      if (i === 1) {
+        params.path = "/"
+        createPageAction(params)
+      }
+    }
+  }
+}
+
 const createTagPages = async (graphql, createPageAction, reporter) => {
   const tagTemplate = path.resolve(`./src/templates/tag.tsx`)
 
@@ -97,6 +153,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   await createBlogPostPages(graphql, createPage, reporter)
   await createTagPages(graphql, createPage, reporter)
+  await createPostListPages(graphql, createPage, reporter)
 }
 
 exports.onCreateNode = ({ node, actions, getNode }) => {

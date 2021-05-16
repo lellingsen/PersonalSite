@@ -30,12 +30,17 @@ interface Props {
       }
     }
   }
+  pageContext: {
+    previous: string
+    next: string
+  }
   location: Location
 }
 
-const BlogIndex = ({ data, location }: Props) => {
+const BlogIndex = ({ data, pageContext, location }: Props) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const posts = data.allMarkdownRemark.nodes
+  const { previous, next } = pageContext
 
   return (
     <Layout location={location} title={siteTitle}>
@@ -55,6 +60,28 @@ const BlogIndex = ({ data, location }: Props) => {
           )
         })}
       </ol>
+      <nav>
+        <ul className="flex flex-wrap justify-between list-none">
+          {previous && (
+            <li className="max-w-1/2 p-4 border hover:shadow-md">
+              <Link to={previous} rel="prev">
+                <p>Previous</p>
+                <p>←</p>
+              </Link>
+            </li>
+          )}
+          {/* Need in case previous is empty to push next to the right */}
+          {!previous && <li></li>}
+          {next && (
+            <li className="max-w-1/2 p-4 border hover:shadow-md">
+              <Link to={next} rel="next">
+                <p className="text-right">Next:</p>
+                <p className="text-right">→</p>
+              </Link>
+            </li>
+          )}
+        </ul>
+      </nav>
     </Layout>
   )
 }
@@ -62,13 +89,17 @@ const BlogIndex = ({ data, location }: Props) => {
 export default BlogIndex
 
 export const pageQuery = graphql`
-  query {
+  query BlogPostsList($skip: Int, $limit: Int) {
     site {
       siteMetadata {
         title
       }
     }
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+    allMarkdownRemark(
+      sort: { fields: [frontmatter___date], order: DESC }
+      skip: $skip
+      limit: $limit
+    ) {
       nodes {
         excerpt
         fields {
