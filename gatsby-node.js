@@ -56,6 +56,55 @@ const createBlogPostPages = async (graphql, createPageAction, reporter) => {
   }
 }
 
+const createPostListPages = async (graphql, createPageAction, reporter) => {
+  const postList = path.resolve(`./src/templates/post-list.tsx`)
+
+  const result = await graphql(
+    `
+      {
+        allMarkdownRemark {
+          totalCount
+        }
+      }
+    `
+  )
+
+  if (result.errors) {
+    reporter.panicOnBuild(
+      `There was an error loading your blog posts for lists`,
+      result.errors
+    )
+    return
+  }
+
+  const postsCount = result.data.allMarkdownRemark.totalCount
+
+  if (postsCount > 0) {
+    const postsPerPage = 3
+    const pageCount = Math.ceil(postsCount / postsPerPage)
+
+    for (let i = 1; i <= pageCount; i++) {
+      const previous = i > 1 ? i - 1 : null
+      const next = i < pageCount ? i + 1 : null
+      const params = {
+        path: `/posts/${i}`,
+        component: postList,
+        context: {
+          skip: (i - 1) * postsPerPage,
+          limit: postsPerPage,
+          previousPage: previous !== null ? `/posts/${previous}` : null,
+          nextPage: next !== null ? `/posts/${next}` : null,
+        },
+      }
+      createPageAction(params)
+      if (i === 1) {
+        params.path = "/"
+        createPageAction(params)
+      }
+    }
+  }
+}
+
 const createTagPages = async (graphql, createPageAction, reporter) => {
   const tagTemplate = path.resolve(`./src/templates/tag.tsx`)
 
@@ -97,6 +146,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   await createBlogPostPages(graphql, createPage, reporter)
   await createTagPages(graphql, createPage, reporter)
+  await createPostListPages(graphql, createPage, reporter)
 }
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
