@@ -1,10 +1,10 @@
 ---
 title: The Manager's Path
-date: "2021-07-18"
+date: "2021-07-16"
 description: "A highlight of my takeaways from this great book"
 tags:
   - management
-  - learning
+  - leadership
 ---
 
 I recently finished the book _The Manager's Path_, which I very much enjoyed, and have been wanting to write up my thoughts on it so that I better remember my takeaways. Authored by Camille Fournier, it was published only a few years ago, and unlike many leadership books I found it extremely relevant and in line with my own experiences. I've begun recommending it to any of my senior developers who are interested in going into leadership. The following are some sections that I found particular value in.
@@ -32,3 +32,15 @@ In this section, Camille goes into some detail on tips to delegate properly, and
 Another point that I've been personally working on lately is looking at the systems of record before asking for updates from individuals. If you're a fan of something like Cal Newport's idea of "Deep Work," you probably want to leave your team alone as much as possible, so as to not cause additional disruptions that reduce productivity. Most software engineering teams have systems like Git and Jira that can be checked for updates, and where you as the manager can see how things are going. If the team is not updating those tools, that's a different problem that should be addressed (back to setting standards). Ideally, tools like these are linked together, so it's obvious what code changes are being made for each ticket, and a manager or peer can easily jump in and see what's going on.
 
 Finally, the encouragement of sharing information - no matter if it's good or bad - is a big one for me. I've been involved in projects where team members were afraid to give a negative update and it almost always results in even worse problems. As a manager, you should want to know what's going on as early as possible, so corrections can be made, resources added, etc. If you blow up on someone when they give you bad news, you're discouraging them from coming forward with those things before it's too late. Be understanding, trust your team, and look to how the issues were caused so you can think of how to prevent them in the future.
+
+## The Shield
+
+The final section from the book I'll visit is The Shield. It covers the idea that one of the roles of management is to protect the team from drama going on in the workplace, and unnecessary distractions. I agree with the author's point that while this is often helpful, there are some situations where you need to address things head-on, even if it's outside of your control, will be a drain on the team, or is even something you disagree with. Typically, this is because either knowing consequences for success or failure can be helpful motivation for the team - even if scary - or because the team is going to find out about the topic one way or another, and it's better to hear it from their boss. Otherwise, it can feel like the organization doesn't think it is important, doesn't understand why they would care, or is pretending that it isn't happening.
+
+A recent example of this for me has been COVID-19, and some of the drama/issues that came from that as a result. There were many conversations like this during that time - how the company was doing financially, how our employees were doing health-wise, if and when we'd start working from home, when we'd be coming back to the office, and so on. I knew that these topics were going to be of great importance to the team, even if we had no real control over them, and I wanted to get in front of it and be available for questions to be asked - even if I didn't know the answer, or if I had to deliver news I didn't agree with or I knew would upset some folks. All in all, I know that was appreciated, and tried to deliver the news in a matter-of-fact way and prepare for questions that I knew would be coming.
+
+On a related note to the drama, one part of my current role is to try to reduce the amount of projects my team is committed to. We are frequently dealing with being overextended and having too many projects going on at once, and I work to get potential projects declined when they are less business-critical, wouldn't be worth the investment, and so on. Historically I've mostly done this behind the scenes so as not to distract my team, and keep them focused on the things we **did** commit to. However, that has an unintended consequence of the team thinking that we say "yes" to everything - since they only hear about those projects. As such, I've worked more recently to let at least the leads/seniors know about some of the projects we're getting shut down for their sake.
+
+## Conclusion
+
+All in all, I found this an enjoyable, practical read, with a lot of real-world advice. As someone who isn't a big fan of the "inspirational quote"-type of leadership materials, I got a lot out of this, and appreciated the fact that it was relatively short and to-the-point. I'd recommend anyone who is interested in becoming a manager, or who already is one but wants to continue progressing, pick up a copy.
