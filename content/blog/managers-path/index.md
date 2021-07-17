@@ -7,6 +7,10 @@ tags:
   - leadership
 ---
 
+![Forest Path](./path.jpg)
+
+<p class="text-center text-sm pb-4">Photo by <a class="underline" href="https://unsplash.com/@capturelight?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">John Thomas</a> on <a class="underline" href="https://unsplash.com/s/photos/path?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></p>
+
 I recently finished the book _The Manager's Path_, which I very much enjoyed, and have been wanting to write up my thoughts on it so that I better remember my takeaways. Authored by Camille Fournier, it was published only a few years ago, and unlike many leadership books I found it extremely relevant and in line with my own experiences. I've begun recommending it to any of my senior developers who are interested in going into leadership. The following are some sections that I found particular value in.
 
 ## Real vs. Imagined Life of Senior IC & Manager
