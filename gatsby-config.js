@@ -137,7 +137,7 @@ module.exports = {
               }
             `,
             output: "/rss.xml",
-            title: "Your Site's RSS Feed",
+            title: "Lars Ellingsen's Blog RSS Feed",
           },
         ],
       },
