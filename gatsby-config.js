@@ -3,13 +3,13 @@ module.exports = {
     title: `Lars Ellingsen`,
     author: {
       name: `Lars Ellingsen`,
-      summary: ` a development manager looking to get back into the technical side of things.`,
+      summary: ` a software engineer focused on the frontend.`,
     },
     description: `A blog built with Gatsby to document a developer's journey to continue learning.`,
     siteUrl: `https://lars-ellingsen.dev/`,
     social: {
       github: `lellingsen`,
-      linkedin: `lars-ellingsen-a800474b`,
+      linkedin: `larsellingsen`,
     },
   },
   plugins: [
