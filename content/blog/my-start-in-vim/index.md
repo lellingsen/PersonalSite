@@ -1,10 +1,17 @@
 ---
 title: My Start in Vim
-date: "2021-07-16"
+date: "2023-03-01"
 description: "How I began to use Vim as my daily driver"
 tags:
   - vim
 ---
+
+
+![A Blue and Black Mechanical Keyboard](./keyboard.jpg)
+  
+<p class="text-center text-sm pb-4">
+Photo by <a href="https://unsplash.com/@chrishainto?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Chris Hainto</a> on <a href="https://unsplash.com/backgrounds/phone/keyboard?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+</p>
 
 ## Context
 
